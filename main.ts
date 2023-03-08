@@ -1,11 +1,23 @@
 function moveReverse () {
-	
+    pins.digitalWritePin(DigitalPin.P15, 1)
+    pins.digitalWritePin(DigitalPin.P16, 0)
+    pins.digitalWritePin(DigitalPin.P8, 0)
+    pins.digitalWritePin(DigitalPin.P9, 1)
+    pins.analogWritePin(AnalogPin.P4, _moveSpeed)
+    pins.analogWritePin(AnalogPin.P13, _moveSpeed)
+    _inMotion = 1
 }
 function moveRight () {
-	
+    _inMotion = 1
 }
 function moveForward () {
-	
+    pins.digitalWritePin(DigitalPin.P15, 0)
+    pins.digitalWritePin(DigitalPin.P16, 1)
+    pins.digitalWritePin(DigitalPin.P8, 1)
+    pins.digitalWritePin(DigitalPin.P9, 0)
+    pins.analogWritePin(AnalogPin.P4, _moveSpeed)
+    pins.analogWritePin(AnalogPin.P13, _moveSpeed)
+    _inMotion = 1
 }
 input.onButtonPressed(Button.A, function () {
 	
@@ -17,7 +29,13 @@ pins.onPulsed(DigitalPin.P2, PulseValue.Low, function () {
     _fallFlag = 1
 })
 function moveStop () {
-	
+    pins.digitalWritePin(DigitalPin.P15, 1)
+    pins.digitalWritePin(DigitalPin.P16, 1)
+    pins.digitalWritePin(DigitalPin.P8, 1)
+    pins.digitalWritePin(DigitalPin.P9, 1)
+    pins.analogWritePin(AnalogPin.P4, 0)
+    pins.analogWritePin(AnalogPin.P13, 0)
+    _inMotion = 0
 }
 pins.onPulsed(DigitalPin.P1, PulseValue.Low, function () {
     _collisionFlag = 1
@@ -42,8 +60,10 @@ pins.onPulsed(DigitalPin.P12, PulseValue.Low, function () {
     _collisionFlag = 1
 })
 function moveLeft () {
-	
+    _inMotion = 1
 }
+let _inMotion = 0
+let _moveSpeed = 0
 let _fallFlag = 0
 let _collisionFlag = 0
 _collisionFlag = 0
