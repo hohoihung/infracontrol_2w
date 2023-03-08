@@ -2,13 +2,13 @@ input.onButtonPressed(Button.A, function () {
 	
 })
 pins.onPulsed(DigitalPin.P0, PulseValue.Low, function () {
-    _collision_flag = 1
+    _fallFlag = 1
 })
 pins.onPulsed(DigitalPin.P2, PulseValue.Low, function () {
-    _collision_flag = 1
+    _fallFlag = 1
 })
 pins.onPulsed(DigitalPin.P1, PulseValue.Low, function () {
-    _collision_flag = 1
+    _collisionFlag = 1
 })
 input.onButtonPressed(Button.B, function () {
     serial.writeValue("pin 0", pins.digitalReadPin(DigitalPin.P0))
@@ -23,13 +23,16 @@ input.onButtonPressed(Button.B, function () {
     serial.writeValue("pin 13", pins.digitalReadPin(DigitalPin.P13))
     serial.writeValue("pin 15", pins.digitalReadPin(DigitalPin.P15))
     serial.writeValue("pin 16", pins.digitalReadPin(DigitalPin.P16))
-    serial.writeValue("Collision Fag", _collision_flag)
+    serial.writeValue("Collision Fag", _collisionFlag)
+    serial.writeValue("Fall Fag", _fallFlag)
 })
 pins.onPulsed(DigitalPin.P12, PulseValue.Low, function () {
-    _collision_flag = 1
+    _collisionFlag = 1
 })
-let _collision_flag = 0
-_collision_flag = 0
+let _fallFlag = 0
+let _collisionFlag = 0
+_collisionFlag = 0
+_fallFlag = 0
 pins.setPull(DigitalPin.P0, PinPullMode.PullUp)
 pins.setPull(DigitalPin.P1, PinPullMode.PullUp)
 pins.setPull(DigitalPin.P2, PinPullMode.PullUp)
@@ -44,7 +47,7 @@ pins.setPull(DigitalPin.P15, PinPullMode.PullUp)
 pins.setPull(DigitalPin.P16, PinPullMode.PullUp)
 basic.showIcon(IconNames.Heart)
 basic.forever(function () {
-    if (_collision_flag) {
+    if (_collisionFlag) {
         basic.showIcon(IconNames.No)
     }
 })
