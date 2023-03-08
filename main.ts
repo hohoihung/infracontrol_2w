@@ -1,3 +1,12 @@
+function moveReverse () {
+	
+}
+function moveRight () {
+	
+}
+function moveForward () {
+	
+}
 input.onButtonPressed(Button.A, function () {
 	
 })
@@ -7,6 +16,9 @@ pins.onPulsed(DigitalPin.P0, PulseValue.Low, function () {
 pins.onPulsed(DigitalPin.P2, PulseValue.Low, function () {
     _fallFlag = 1
 })
+function moveStop () {
+	
+}
 pins.onPulsed(DigitalPin.P1, PulseValue.Low, function () {
     _collisionFlag = 1
 })
@@ -29,6 +41,9 @@ input.onButtonPressed(Button.B, function () {
 pins.onPulsed(DigitalPin.P12, PulseValue.Low, function () {
     _collisionFlag = 1
 })
+function moveLeft () {
+	
+}
 let _fallFlag = 0
 let _collisionFlag = 0
 _collisionFlag = 0
